@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" width="1200" height="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+  <defs>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.55"/>
+    </linearGradient>
+    <clipPath id="c"><rect width="1200" height="160" rx="18"/></clipPath>
+    <style>
+      .rot { animation: rot 4s linear infinite; transform-origin: 140px 80px; }
+      @keyframes rot { to { transform: rotate(360deg); } }
+      .ping { animation: ping 4s ease-out infinite; opacity:0; }
+      .p2 { animation-delay: 1.4s; } .p3 { animation-delay: 2.7s; }
+      @keyframes ping { 0%{opacity:0} 5%{opacity:1} 60%{opacity:0} 100%{opacity:0} }
+      .blink { animation: blink 1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity:0; } }
+      @media (prefers-reduced-motion: reduce) { * { animation:none !important; } .ping{opacity:1} }
+    </style>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="1200" height="160" fill="#070a11"/>
+    <g stroke="#1e293b" fill="none">
+      <circle cx="140" cy="80" r="60"/><circle cx="140" cy="80" r="40"/><circle cx="140" cy="80" r="20"/>
+      <path d="M80 80H200M140 20V140"/>
+    </g>
+    <g class="rot">
+      <path d="M140 80 L200 80 A60 60 0 0 0 182 37 Z" fill="url(#sweep)"/>
+    </g>
+    <circle class="ping"    cx="172" cy="55"  r="4" fill="#22d3ee"/>
+    <circle class="ping p2" cx="110" cy="112" r="4" fill="#f59e0b"/>
+    <circle class="ping p3" cx="104" cy="60"  r="4" fill="#a78bfa"/>
+
+    <text x="250" y="72" font-size="22" fill="#e2e8f0" font-weight="700"
+          font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Always scanning for the next hard problem.</text>
+    <text x="250" y="104" font-size="13" fill="#64748b" letter-spacing="2">LINK STABLE · OPEN TO COLLABORATIONS · BENGALURU<tspan class="blink" fill="#38bdf8"> ▌</tspan></text>
+  </g>
+</svg>

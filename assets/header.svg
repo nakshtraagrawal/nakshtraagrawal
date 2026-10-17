@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1b2333" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="vig" cx="50%" cy="50%" r="75%">
+      <stop offset="60%" stop-color="#05070c" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#05070c" stop-opacity="0.9"/>
+    </radialGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="0.85" stop-color="#38bdf8" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+    <clipPath id="frame"><rect x="0" y="0" width="1200" height="420" rx="18"/></clipPath>
+    <style>
+      .hud   { fill:#7dd3fc; font-size:13px; letter-spacing:2px; }
+      .dim   { fill:#475569; font-size:12px; letter-spacing:2px; }
+      .lbl   { font-size:12px; font-weight:700; letter-spacing:1px; fill:#05070c; }
+      .box   { fill:none; stroke-width:2; stroke-dasharray:420; stroke-dashoffset:420; }
+
+      .scan  { animation: scan 4.5s linear infinite; }
+      @keyframes scan { from { transform: translateY(-120px); } to { transform: translateY(420px); } }
+
+      .rec   { animation: blink 1.2s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .cross { animation: drift 9s ease-in-out infinite; transform-origin: 880px 210px; }
+      @keyframes drift {
+        0%,100% { transform: translate(0,0); }
+        25% { transform: translate(-60px,-30px); }
+        50% { transform: translate(40px,40px); }
+        75% { transform: translate(70px,-35px); }
+      }
+
+      .det   { opacity:0; animation: det 9s infinite; }
+      .det .box { animation: draw 9s infinite; }
+      .d1, .d1 .box { animation-delay: 0.6s; }
+      .d2, .d2 .box { animation-delay: 2.6s; }
+      .d3, .d3 .box { animation-delay: 4.6s; }
+      @keyframes det  { 0%{opacity:0} 4%{opacity:1} 55%{opacity:1} 62%{opacity:0} 100%{opacity:0} }
+      @keyframes draw { 0%{stroke-dashoffset:420} 8%{stroke-dashoffset:0} 100%{stroke-dashoffset:0} }
+
+      .fade  { opacity:0; animation: fadein 1.2s ease-out forwards; }
+      .f2 { animation-delay: .5s; } .f3 { animation-delay: 1s; }
+      @keyframes fadein { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+
+      .caret { animation: blink 1s steps(1) infinite; }
+
+      .alt   { animation: alt 6s ease-in-out infinite; }
+      @keyframes alt { 0%,100%{ transform: translateY(0) } 50% { transform: translateY(-48px) } }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; }
+        .det, .fade { opacity:1; } .box { stroke-dashoffset:0; }
+      }
+    </style>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="420" fill="#070a11"/>
+    <rect width="1200" height="420" fill="url(#grid)"/>
+
+    <!-- terrain blobs (right side) -->
+    <g opacity="0.55">
+      <ellipse cx="900" cy="300" rx="260" ry="90" fill="#0e1726"/>
+      <ellipse cx="820" cy="140" rx="150" ry="60" fill="#0c1422"/>
+      <path d="M640 380 C 760 300, 860 340, 980 250 S 1160 200, 1200 230 L1200 420 L640 420Z" fill="#0b1320"/>
+      <path d="M600 90 C 700 120, 760 60, 900 95 S 1100 70, 1200 110" fill="none" stroke="#14233a" stroke-width="10" stroke-linecap="round"/>
+    </g>
+
+    <!-- detections -->
+    <g class="det d1">
+      <rect class="box" x="760" y="112" width="70" height="104" stroke="#22d3ee"/>
+      <rect x="760" y="92" width="118" height="20" fill="#22d3ee"/>
+      <text class="lbl" x="767" y="107">person 0.94</text>
+    </g>
+    <g class="det d2">
+      <rect class="box" x="935" y="250" width="118" height="70" stroke="#f59e0b"/>
+      <rect x="935" y="230" width="112" height="20" fill="#f59e0b"/>
+      <text class="lbl" x="942" y="245">debris 0.88</text>
+    </g>
+    <g class="det d3">
+      <rect class="box" x="955" y="112" width="100" height="80" stroke="#a78bfa"/>
+      <rect x="955" y="92" width="120" height="20" fill="#a78bfa"/>
+      <text class="lbl" x="962" y="107">vehicle 0.91</text>
+    </g>
+
+    <!-- crosshair -->
+    <g class="cross" stroke="#e2e8f0" stroke-width="1.5" fill="none" opacity="0.85">
+      <circle cx="880" cy="210" r="34"/>
+      <circle cx="880" cy="210" r="2" fill="#e2e8f0"/>
+      <path d="M880 160v26M880 234v26M830 210h26M904 210h26"/>
+    </g>
+
+    <!-- scanline -->
+    <rect class="scan" x="0" y="0" width="1200" height="120" fill="url(#scan)"/>
+
+    <rect width="1200" height="420" fill="url(#vig)"/>
+
+    <!-- viewfinder corners -->
+    <g stroke="#7dd3fc" stroke-width="3" fill="none" stroke-linecap="square">
+      <path d="M28 64V28H64"/><path d="M1136 28H1172V64"/>
+      <path d="M28 356V392H64"/><path d="M1136 392H1172V356"/>
+    </g>
+
+    <!-- top HUD -->
+    <g>
+      <circle class="rec" cx="58" cy="52" r="6" fill="#ef4444"/>
+      <text class="hud" x="72" y="57">REC</text>
+      <text class="dim" x="130" y="57">CAM 01 · EO · 4K</text>
+      <text class="dim" x="1142" y="57" text-anchor="end">LAT 12.97° N · LON 77.59° E</text>
+    </g>
+
+    <!-- altitude ladder -->
+    <g transform="translate(1150 120)">
+      <rect x="-6" y="0" width="1" height="200" fill="#334155"/>
+      <g class="alt">
+        <text class="dim" x="-14" y="24"  text-anchor="end">250</text>
+        <text class="dim" x="-14" y="72"  text-anchor="end">200</text>
+        <text class="dim" x="-14" y="120" text-anchor="end">150</text>
+        <text class="dim" x="-14" y="168" text-anchor="end">100</text>
+        <text class="dim" x="-14" y="216" text-anchor="end">50</text>
+      </g>
+      <path d="M-2 100 l10 -7 v14z" fill="#7dd3fc"/>
+      <text class="hud" x="0" y="-14" text-anchor="end">ALT FT</text>
+    </g>
+
+    <!-- name block -->
+    <g transform="translate(70 0)">
+      <text class="fade" x="0" y="190" font-size="58" font-weight="800" fill="url(#name)" letter-spacing="1"
+            font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Nakshtra Agrawal</text>
+      <text class="fade f2" x="2" y="232" font-size="20" fill="#94a3b8">
+        &gt; computer vision for things that fly<tspan class="caret" fill="#7dd3fc">_</tspan>
+      </text>
+      <g class="fade f3">
+        <text class="dim" x="2" y="282">PERCEPTION · EDGE AI · AUTONOMY</text>
+      </g>
+    </g>
+
+    <!-- bottom HUD -->
+    <text class="dim" x="58" y="378">MODEL: YOLOv11 + GROUNDING-DINO</text>
+    <text class="hud" x="600" y="378" text-anchor="middle">TRACKING ●</text>
+    <text class="dim" x="1142" y="378" text-anchor="end">TENSORRT · &lt;1s / FRAME</text>
+  </g>
+</svg>

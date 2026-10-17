@@ -1,9 +1,4 @@
-<h1 align="center">Nakshtra Agrawal</h1>
-
-<p align="center">
-  <b>Computer vision for things that fly.</b><br/>
-  Perception systems for autonomous drones, from model to edge to field.
-</p>
+<img src="assets/header.svg" width="100%" alt="Nakshtra Agrawal — computer vision for things that fly"/>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/nakshtra-agrawal"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
@@ -11,7 +6,7 @@
   <img src="https://img.shields.io/badge/Bengaluru-111111?style=flat-square&logo=googlemaps&logoColor=white"/>
 </p>
 
----
+<img src="assets/divider.svg" width="100%"/>
 
 **Now**
 - Building vision systems for UAVs at **Comono India**
@@ -22,7 +17,7 @@
 - 🥇 **NIDAR, 1st place** (Disaster Management), out of 350+ teams, for a dual-drone flood response system
 - 🌐 **IARC Mission 10**: CV lead, International Aerial Robotics Competition
 
----
+<img src="assets/divider.svg" width="100%"/>
 
 ### Selected work
 
@@ -50,7 +45,7 @@ LLM pipeline (Llama 3.3 70B on **AWS Bedrock**, Gemini 2.5 for refinement) that 
 Forecaster, dispatcher and HazMat agents. Predicts bin overflow before the next pickup, routes with haversine nearest-neighbour TSP, and grounds safety briefs in CPCB / OSH regulations via Llama 3.3 on Groq.  
 `FastAPI` `React` `TypeScript` `RAG`
 
----
+<img src="assets/divider.svg" width="100%"/>
 
 ### Stack
 
@@ -59,3 +54,7 @@ Forecaster, dispatcher and HazMat agents. Predicts bin overflow before the next 
 </p>
 
 <sub>Also: YOLO · Grounding DINO · TensorRT · NVIDIA Jetson · rasterio</sub>
+
+<img src="assets/divider.svg" width="100%"/>
+
+<img src="assets/footer.svg" width="100%"/>

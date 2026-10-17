@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" width="1200" height="30">
+  <defs>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.9"/>
+    </linearGradient>
+    <style>
+      .fly { animation: fly 5s cubic-bezier(.6,0,.4,1) infinite; }
+      @keyframes fly { from { transform: translateX(-180px); } to { transform: translateX(1200px); } }
+      @media (prefers-reduced-motion: reduce) { .fly { animation: none; } }
+    </style>
+  </defs>
+  <path d="M0 15H1200" stroke="#64748b" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="2 8"/>
+  <g class="fly">
+    <rect x="0" y="14" width="160" height="2" fill="url(#trail)"/>
+    <circle cx="164" cy="15" r="4" fill="#38bdf8"/>
+    <circle cx="164" cy="15" r="9" fill="none" stroke="#38bdf8" stroke-opacity="0.35"/>
+  </g>
+</svg>
